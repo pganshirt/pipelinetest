@@ -1,5 +1,6 @@
 
-user_branch = params.BRANCH ?: 'master'
+user_branch = params.BRANCH ?: 
+              'master'
 node {
     checkout([$class: 'GitSCM', 
               branches: [[name: "${user_branch}"]], 
