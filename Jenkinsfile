@@ -1,8 +1,8 @@
 
-
+user_branch = params.BRANCH ?: 'master'
 node {
     checkout([$class: 'GitSCM', 
-          branches: [[name: '*/master']], 
+              branches: [[name: "${user_branch}"]], 
           doGenerateSubmoduleConfigurations: false, 
           extensions: [[$class: 'CleanCheckout']], 
           submoduleCfg: [], 
