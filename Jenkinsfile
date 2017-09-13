@@ -3,7 +3,7 @@ if (! params.BRANCH) {
 }
 
 for (String item : params) {
-  echo item
+  echo "${item}"
 }
 
 user_branch = params.BRANCH ?: 
