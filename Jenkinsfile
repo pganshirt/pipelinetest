@@ -2,7 +2,7 @@ if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
 echo "${params.BRANC}"
-print BRANCH
+print params.getClass()
 echo "${env.BRANCH}"
 user_branch = params.BRANCH ?: 
               'master'
