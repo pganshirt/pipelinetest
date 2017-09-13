@@ -1,4 +1,6 @@
-
+if (! params.BRANCH) {
+  error('ERROR: Parameter \'BUILD\' must be set')
+}
 user_branch = params.BRANCH ?: 
               'master'
 node {
