@@ -1,6 +1,7 @@
 if (! params.BRANCH) {
-  error('ERROR: Parameter \'BUILD\' must be set')
+  error('Parameter \'BUILD\' must be set')
 }
+echo params
 user_branch = params.BRANCH ?: 
               'master'
 node {
