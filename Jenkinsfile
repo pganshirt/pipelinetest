@@ -1,7 +1,7 @@
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
-echo params
+echo "${params}"
 user_branch = params.BRANCH ?: 
               'master'
 node {
