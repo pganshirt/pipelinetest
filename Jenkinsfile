@@ -2,7 +2,7 @@ if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
 
-for (item : params) {
+for (String item : params) {
   echo item
 }
 
