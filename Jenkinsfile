@@ -1,7 +1,7 @@
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
-echo "${params.BRANCH}"
+echo "${params.BRANC}"
 echo BRANCH
 echo "${env.BRANCH}"
 user_branch = params.BRANCH ?: 
