@@ -1,9 +1,11 @@
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
-echo "${params.BRANC}"
-print params.getClass()
-echo "${env.BRANCH}"
+
+for (item : params) {
+  echo item
+}
+
 user_branch = params.BRANCH ?: 
               'master'
 node {
