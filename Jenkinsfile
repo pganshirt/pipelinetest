@@ -1,5 +1,5 @@
 
-def test = null
+test = null
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
