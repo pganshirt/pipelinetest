@@ -1,4 +1,4 @@
-
+script_debugger_tests_branch = 'myTestBranch'
 myModule = null
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
@@ -9,6 +9,7 @@ if (params.runTest) {
 scriptDebuggerTestsBranch=env.script_debugger_tests_branch ?: 
        binding.hasVariable('script_debugger_tests_branch') ? 
        script_debugger_tests_branch : 'master'
+echo "${scriptDebuggerTestsBranch}"
 for (String item : params) {
   echo "${item}"
 }
