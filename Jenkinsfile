@@ -1,3 +1,5 @@
+
+def test
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
@@ -5,7 +7,7 @@ if (! params.BRANCH) {
 for (String item : params) {
   echo "${item}"
 }
-
+load 'workflow/test.groovy'
 user_branch = params.BRANCH ?: 
               'master'
 node {
