@@ -11,13 +11,14 @@ for (String item : params) {
 user_branch = params.BRANCH ?: 
               'master'
 node {
-  test = load "${env.WORKSPACE}/workflow/test.groovy"
+  
     checkout([$class: 'GitSCM', 
               branches: [[name: "${user_branch}"]], 
           doGenerateSubmoduleConfigurations: false, 
           extensions: [[$class: 'CleanCheckout', relativeTargetDir: 'scripts']], 
           submoduleCfg: [], 
           userRemoteConfigs: [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
+    test = load 'scripts/workflow/test.groovy"
     stage('Build') {
         echo 'Building....'
     }
