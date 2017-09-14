@@ -4,7 +4,7 @@ if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
 if (params.runTest) {
-  echo "Please run the tests"
+  myInternalFunction()
 }
 
 for (String item : params) {
@@ -31,5 +31,7 @@ node {
         echo 'Deploying....'
     }
 }
-
+def myInternalFunction () {
+  echo "myInternalFunction has been called"
+}
 myModule.colorStage()
