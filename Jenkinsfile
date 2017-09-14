@@ -7,10 +7,11 @@ if (! params.BRANCH) {
 for (String item : params) {
   echo "${item}"
 }
-test = load 'workflow/test.groovy'
+
 user_branch = params.BRANCH ?: 
               'master'
 node {
+    test = load 'workflow/test.groovy'
     checkout([$class: 'GitSCM', 
               branches: [[name: "${user_branch}"]], 
           doGenerateSubmoduleConfigurations: false, 
