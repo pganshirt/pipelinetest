@@ -18,7 +18,7 @@ node {
           extensions: [[$class: 'CleanCheckout', relativeTargetDir: 'scripts']], 
           submoduleCfg: [], 
           userRemoteConfigs: [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
-    test = load 'scripts/workflow/test.groovy"
+    test = load 'scripts/workflow/test.groovy'
     stage('Build') {
         echo 'Building....'
     }
