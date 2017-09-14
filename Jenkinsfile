@@ -14,7 +14,6 @@ node {
   
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'scripts']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
     test = load 'scripts/workflow/test.groovy'
-    test.colorStage()
     stage('Build') {
         echo 'Building....'
     }
@@ -25,3 +24,5 @@ node {
         echo 'Deploying....'
     }
 }
+
+test.colorStage()
