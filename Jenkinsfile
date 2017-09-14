@@ -3,6 +3,9 @@ myModule = null
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
+if (params.runTest) {
+  echo "Please run the tests"
+}
 
 for (String item : params) {
   echo "${item}"
