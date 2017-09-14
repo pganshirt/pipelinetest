@@ -1,5 +1,5 @@
 
-test = null
+myModule = null
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
@@ -13,7 +13,7 @@ user_branch = params.BRANCH ?:
 node {
   
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'scripts']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
-    test = load 'scripts/workflow/test.groovy'
+    myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
         echo 'Building....'
     }
@@ -25,4 +25,4 @@ node {
     }
 }
 
-test.colorStage()
+myModule.colorStage()
