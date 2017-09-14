@@ -12,12 +12,7 @@ user_branch = params.BRANCH ?:
               'master'
 node {
   
-    checkout([$class: 'GitSCM', 
-              branches: [[name: "${user_branch}"]], 
-          doGenerateSubmoduleConfigurations: false, 
-          extensions: [[$class: 'CleanCheckout', relativeTargetDir: 'scripts']], 
-          submoduleCfg: [], 
-          userRemoteConfigs: [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'scripts']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
     test = load 'scripts/workflow/test.groovy'
     stage('Build') {
         echo 'Building....'
