@@ -11,7 +11,7 @@ for (String item : params) {
 user_branch = params.BRANCH ?: 
               'master'
 node {
-    test = load 'workflow/test.groovy'
+    test = load 'pipelinetest/workflow/test.groovy'
     checkout([$class: 'GitSCM', 
               branches: [[name: "${user_branch}"]], 
           doGenerateSubmoduleConfigurations: false, 
