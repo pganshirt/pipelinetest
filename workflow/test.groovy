@@ -1,4 +1,4 @@
-node {
+def colorStage() {
     // This displays colors using the 'xterm' ansi color map.
     ansiColor('xterm') {
         // Just some echoes to show the ANSI color.
