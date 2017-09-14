@@ -7,3 +7,4 @@ def colorStage() {
         }
     }
 }
+return this
