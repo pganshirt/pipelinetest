@@ -2,13 +2,16 @@ def initParams () {
   script_debugger_tests_branch = 'myTestBranch'
   var = 'runTest'
   myModule = null
-  runTest = params.runTest ?: true
+  runTest = params.runTest
   user_branch = env.TEST_BRANCH ?:
               params.TEST_BRANCH ?:
               'master'
 }
 initParams()
 echo "This is runTest ${runTest}.  This is params.runTest ${params.runTest}"
+if (runTest) {
+    echo "We should run the tests"
+}
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
