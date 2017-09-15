@@ -1,9 +1,10 @@
 script_debugger_tests_branch = 'myTestBranch'
+var = 'runTest'
 myModule = null
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
-if (params.'runTest') {
+if (params.${var}) {
   myInternalFunction()
 }
 scriptDebuggerTestsBranch=env.script_debugger_tests_branch ?: 
