@@ -7,6 +7,12 @@ if (! params.BRANCH) {
 if (params.(var.toString())) {
   myInternalFunction()
 }
+//def resolveVar(var) {
+//  resolvedVar = env.(var.toString()) ?:
+//      binding.hasVariable(var.toString()) ?
+
+echo binding.hasVariable(script_debugger_tests_branch)
+        
 scriptDebuggerTestsBranch=env.script_debugger_tests_branch ?: 
        binding.hasVariable('script_debugger_tests_branch') ? 
        script_debugger_tests_branch : 'master'
