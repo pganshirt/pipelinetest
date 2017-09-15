@@ -8,6 +8,7 @@ def initParams () {
               'master'
 }
 initParams()
+echo "This is runTest ${runTest}"
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
