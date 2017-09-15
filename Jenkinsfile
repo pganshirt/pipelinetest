@@ -1,6 +1,4 @@
-script_debugger_tests_branch = 'myTestBranch'
-var = 'runTest'
-myModule = null
+initParams()
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
@@ -19,9 +17,6 @@ for (String item : params) {
   echo "${item}"
 }
 
-user_branch = env.TEST_BRANCH ?:
-              params.TEST_BRANCH ?:
-              'master'
 echo "user_branch is ${user_branch}"
 node {
   
@@ -43,5 +38,14 @@ node {
 }
 def myInternalFunction () {
   echo "myInternalFunction has been called"
+}
+
+def initParams () {
+  script_debugger_tests_branch = 'myTestBranch'
+  var = 'runTest'
+  myModule = null
+  user_branch = env.TEST_BRANCH ?:
+              params.TEST_BRANCH ?:
+              'master'
 }
 myModule.colorStage()
