@@ -4,7 +4,7 @@ myModule = null
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
-if (params.${var}) {
+if (params.(var.toString())) {
   myInternalFunction()
 }
 scriptDebuggerTestsBranch=env.script_debugger_tests_branch ?: 
