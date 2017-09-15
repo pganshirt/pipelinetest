@@ -7,9 +7,9 @@ if (! params.BRANCH) {
 if (params.(var.toString())) {
   myInternalFunction()
 }
-//def resolveVar(var) {
-//  resolvedVar = env.(var.toString()) ?:
-//      binding.hasVariable(var.toString()) ?
+def resolveVar(var) {
+  resolvedVar = env.(var.toString()) ?:
+      binding.hasVariable(var) ?
 
 if (binding.hasVariable('script_debugger_tests_branch')){
     echo "script_debugger_tests_branch is legit"
@@ -23,7 +23,8 @@ for (String item : params) {
   echo "${item}"
 }
 
-user_branch = params.BRANCH ?: 
+user_branch = env.BRANCH ?:
+              params.BRANCH ?:
               'master'
 node {
   
