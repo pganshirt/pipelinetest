@@ -11,7 +11,9 @@ if (params.(var.toString())) {
 //  resolvedVar = env.(var.toString()) ?:
 //      binding.hasVariable(var.toString()) ?
 
-echo binding.hasVariable(script_debugger_tests_branch)
+if (binding.hasVariable(script_debugger_tests_branch)){
+    echo "script_debugger_tests_branch is legit"
+}
         
 scriptDebuggerTestsBranch=env.script_debugger_tests_branch ?: 
        binding.hasVariable('script_debugger_tests_branch') ? 
