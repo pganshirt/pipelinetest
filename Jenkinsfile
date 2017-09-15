@@ -3,9 +3,11 @@ myModule = null
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
 }
-if (params.runTest) {
+if (params.'runTest') {
   myInternalFunction()
 }
+def resolveVar(var) {
+  resolvedVar = 
 scriptDebuggerTestsBranch=env.script_debugger_tests_branch ?: 
        binding.hasVariable('script_debugger_tests_branch') ? 
        script_debugger_tests_branch : 'master'
