@@ -19,8 +19,8 @@ for (String item : params) {
   echo "${item}"
 }
 
-user_branch = env.BRANCH ?:
-              params.BRANCH ?:
+user_branch = env.TEST_BRANCH ?:
+              params.TEST_BRANCH ?:
               'master'
 echo "user_branch is ${user_branch}"
 node {
