@@ -6,8 +6,6 @@ if (! params.BRANCH) {
 if (params.'runTest') {
   myInternalFunction()
 }
-def resolveVar(var) {
-  resolvedVar = 
 scriptDebuggerTestsBranch=env.script_debugger_tests_branch ?: 
        binding.hasVariable('script_debugger_tests_branch') ? 
        script_debugger_tests_branch : 'master'
