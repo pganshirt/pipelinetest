@@ -1,3 +1,11 @@
+def initParams () {
+  script_debugger_tests_branch = 'myTestBranch'
+  var = 'runTest'
+  myModule = null
+  user_branch = env.TEST_BRANCH ?:
+              params.TEST_BRANCH ?:
+              'master'
+}
 initParams()
 if (! params.BRANCH) {
   error('Parameter \'BUILD\' must be set')
@@ -40,12 +48,4 @@ def myInternalFunction () {
   echo "myInternalFunction has been called"
 }
 
-def initParams () {
-  script_debugger_tests_branch = 'myTestBranch'
-  var = 'runTest'
-  myModule = null
-  user_branch = env.TEST_BRANCH ?:
-              params.TEST_BRANCH ?:
-              'master'
-}
 myModule.colorStage()
