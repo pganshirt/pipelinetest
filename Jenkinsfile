@@ -22,6 +22,7 @@ for (String item : params) {
 user_branch = env.BRANCH ?:
               params.BRANCH ?:
               'master'
+echo "user_branch is ${user_branch}"
 node {
   
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
