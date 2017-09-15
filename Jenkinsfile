@@ -2,6 +2,7 @@ def initParams () {
   script_debugger_tests_branch = 'myTestBranch'
   var = 'runTest'
   myModule = null
+  runTest = params.runTest ?: true
   user_branch = env.TEST_BRANCH ?:
               params.TEST_BRANCH ?:
               'master'
