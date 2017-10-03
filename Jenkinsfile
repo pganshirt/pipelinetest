@@ -7,6 +7,9 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
+if (build_bypass_image_version) {
+  echo "build_bypass_image_version is version ${build_bypass_image_version}
+}
 initParams()
 echo "This is runTest ${runTest}.  This is params.runTest ${params.runTest}"
 if (runTest) {
