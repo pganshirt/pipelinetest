@@ -55,7 +55,7 @@ node {
               [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
     myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
-        for (jvm in [1,2]) {
+        for (jvm : [1,2]) {
             muid = jvm == 1 ? uid : "${uid}${jvm}"
             sh "echo cd pipeline.scripts/ocapirest && docker-compose -f ../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
         }
