@@ -11,6 +11,13 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
+bid = "${env.JOB_NAME.replace('-','')}${env.BUILD_NUMBER}"
+uid = "${bid}ocapirest"
+jvmIndex = ocapi_jvms.toInteger()
+for (jvm in 1..jvmIndex) {
+  muid = jvm == 1 ? uid : "${uid}${jvm}"
+  echo "sh cd pipeline.scripts/ocapirest && docker-compose -f ../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
+}
 exec_num = ocapi_jvms.toInteger()-1
 if (params.build_bypass_image_version) {
   echo "build_bypass_image_version is version ${build_bypass_image_version}"
