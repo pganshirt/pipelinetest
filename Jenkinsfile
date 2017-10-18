@@ -17,7 +17,8 @@ if (params.build_bypass_image_version) {
 }
 initParams()
 mylist = (0..exec_num).collect { 
-          "-v ${mypwd}/test.groovyBuild.properties:/testrunner/J${it}/test.properties"}.join(" ")
+          "-v ${mypwd}/test.groovyBuild.properties:/testrunner/J${it}/test.properties"
+          }.join(" ")
 echo "${mylist}"
 echo "This is runTest ${runTest}.  This is params.runTest ${params.runTest}"
 if (runTest) {
