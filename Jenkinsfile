@@ -16,8 +16,8 @@ uid = "${bid}ocapirest"
 jvmIndex = ocapi_jvms.toInteger()
 for (jvm in 1..jvmIndex) {
   muid = jvm == 1 ? uid : "${uid}${jvm}"
-  echo "sh cd pipeline.scripts/ocapirest && docker-compose -f \
-        ../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
+  echo "sh cd pipeline.scripts/ocapirest && docker-compose -f "+
+        "../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
 }
 exec_num = ocapi_jvms.toInteger()-1
 if (params.build_bypass_image_version) {
