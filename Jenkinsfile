@@ -65,7 +65,6 @@ node {
             sh "echo sh cd pipeline.scripts/ocapirest && docker-compose -f "+
                "../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
         }
-}
     }
     stage('Test') {
         echo 'Building....'
