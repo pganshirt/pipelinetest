@@ -15,7 +15,7 @@ if (params.build_bypass_image_version) {
   echo "build_bypass_image_version is version ${build_bypass_image_version}"
 }
 initParams()
-mylist = (0..ocapi_jvms.toInteger()).collect { 
+mylist = (1..ocapi_jvms.toInteger()-1).collect { 
           "-v ${mypwd}/test.groovyBuild.properties:/testrunner/J${it}/test.properties"}.join(" ")
 echo "${mylist}"
 echo "This is runTest ${runTest}.  This is params.runTest ${params.runTest}"
