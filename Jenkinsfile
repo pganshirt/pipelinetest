@@ -14,6 +14,7 @@ def initParams () {
 bid = "${env.JOB_NAME.replace('-','')}${env.BUILD_NUMBER}"
 uid = "${bid}ocapirest"
 jvmIndex = ocapi_jvms.toInteger()
+jvmlist = (0..jvmIndex).toList()
 exec_num = ocapi_jvms.toInteger()-1
 if (params.build_bypass_image_version) {
   echo "build_bypass_image_version is version ${build_bypass_image_version}"
@@ -55,7 +56,7 @@ node {
               [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
     myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
-        for (jvm in 1..2) {
+        for (jvm in jvmlist) {
             muid = jvm == 1 ? uid : "${uid}${jvm}"
             sh "echo cd pipeline.scripts/ocapirest && echo docker-compose -f ../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
         }
