@@ -16,7 +16,7 @@ uid = "${bid}ocapirest"
 jvmIndex = ocapi_jvms.toInteger()
 for (jvm in 1..jvmIndex) {
   muid = jvm == 1 ? uid : "${uid}${jvm}"
-  echo "sh cd pipeline.scripts/ocapirest && docker-compose -f "+
+  sh "echo sh cd pipeline.scripts/ocapirest && docker-compose -f "+
         "../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
 }
 exec_num = ocapi_jvms.toInteger()-1
@@ -60,7 +60,12 @@ node {
               [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
     myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
-        echo 'Building....'
+        for (jvm in 1..jvmIndex) {
+            muid = jvm == 1 ? uid : "${uid}${jvm}"
+            sh "echo sh cd pipeline.scripts/ocapirest && docker-compose -f "+
+               "../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
+        }
+}
     }
     stage('Test') {
         echo 'Building....'
