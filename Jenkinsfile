@@ -63,6 +63,7 @@ node {
     }
     stage('Test') {
         echo 'Building....'
+        sh "docker run -d -it --rm tomcat:8.0"
     }
     stage('Deploy') {
         echo 'Deploying....'
