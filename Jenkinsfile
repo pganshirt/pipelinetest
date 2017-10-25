@@ -11,6 +11,7 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
+def parallelism = 2
 bid = "${env.JOB_NAME.replace('-','')}${env.BUILD_NUMBER}"
 uid = "${bid}ocapirest"
 jvmIndex = ocapi_jvms.toInteger()
@@ -60,6 +61,9 @@ node {
             muid = jvm == 1 ? uid : "${uid}${jvm}"
             sh "echo cd pipeline.scripts/ocapirest && echo docker-compose -f ../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
         }
+      for ( i in 1..parallelism){
+        echo "This is ecom version ${i}"
+      }
     }
     stage('Test') {
         echo 'Building....'
