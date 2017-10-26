@@ -61,13 +61,10 @@ node {
             muid = jvm == 1 ? uid : "${uid}${jvm}"
             sh "echo cd pipeline.scripts/ocapirest && echo docker-compose -f ../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
         }
-      for ( i in 1..parallelism){
+        for ( i in 1..parallelism){
         echo "This is ecom version ${i}"
-      }
-      myModule.prepareComposeEnvFileFromTemplate('compose/ocapi', 'test')
-{
-    sh "cp ${path}/template/.env ${path}"
-}
+        }
+        myModule.prepareComposeEnvFileFromTemplate('compose/ocapi', 'test')
     }
     stage('Test') {
         echo 'Building....'
