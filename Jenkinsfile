@@ -64,7 +64,7 @@ node {
         for ( i in 1..parallelism){
         echo "This is ecom version ${i}"
         }
-        myModule.prepareComposeEnvFileFromTemplate('compose/ocapi', 'test')
+        myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
     }
     stage('Test') {
         echo 'Building....'
