@@ -20,7 +20,7 @@ uid = "${bid}ocapirest"
 def testLists = testSuites.collate( testSuites.size().intdiv(testRunNum))
 if (testLists.size() > testRunNum){
   testLists[testRunNum-1] += (testLists[testRunNum])
-  testLists.remove(result[testRunNum])
+  testLists.remove(testLists[testRunNum])
 }
 def testMap = []
 for ( int i = 0; i < testLists.size(); i++) {
