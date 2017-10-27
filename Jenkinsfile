@@ -17,23 +17,16 @@ testSuites = ["test_rest","test_rest_batch","test_rest_csc","test_rest_meta",
 testRunNum = 2
 bid = "${env.JOB_NAME.replace('-','')}${env.BUILD_NUMBER}"
 uid = "${bid}ocapirest"
-def result = testSuites.collate( testSuites.size().intdiv(testRunNum))
+def testLists = testSuites.collate( testSuites.size().intdiv(testRunNum))
 if (result.size() > testRunNum){
   result[testRunNum-1] += (result[testRunNum])
   result.remove(result[testRunNum])
 }
-def lm = [:]
-def counter = 1
-for (suite in result) {
-  lm[uid+counter]=suite
-  ++counter
- }
-
-lm.each{ key, value ->
-  echo "Key is: ${key}"
-  echo "Value is : ${value}"
+def testMap = []
+for ( int i = 0; i < testLists.size(); i++) {
+  testMap[i]=[uid+(i+1), testLists[i]]
 }
-
+echo testMap
 echo "This is the map:  ${lm}"
 
 
