@@ -26,9 +26,7 @@ def testMap = []
 for ( int i = 0; i < testLists.size(); i++) {
   testMap[i]=[uid+(i+1), testLists[i]]
 }
-echo testMap
-
-
+echo "${testMap}"
 
 jvmIndex = ocapi_jvms.toInteger()
 jvmlist = (0..jvmIndex).toList()
