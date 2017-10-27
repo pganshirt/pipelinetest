@@ -29,7 +29,7 @@ for (suite in result) {
   ++counter
  }
 
-echo "This is the map:  ${lm}
+echo "This is the map:  ${lm}"
 
 
 jvmIndex = ocapi_jvms.toInteger()
