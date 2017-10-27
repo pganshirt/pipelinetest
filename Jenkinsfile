@@ -11,9 +11,27 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
-def parallelism = 2
+testSuites = ["test_rest","test_rest_batch","test_rest_csc","test_rest_meta",
+              "test_rest_data","test_rest_shop","test_rest_shop2","test_rest_oauth",
+              "test_rest_webdav","test_rest_integration","test_ecom_server"]
+testRunNum = 2
 bid = "${env.JOB_NAME.replace('-','')}${env.BUILD_NUMBER}"
 uid = "${bid}ocapirest"
+def result = testSuites.collate( testSuites.size().intdiv(testRunNum))
+if (result.size() > testRunNum){
+  result[testRunNum-1] += (result[testRunNum])
+  result.remove(result[testRunNum])
+}
+def lm = [:]
+def counter = 1
+for (suite in result) {
+  lm[uid+counter]=suite
+  ++counter
+ }
+
+echo "This is the map:  ${lm}
+
+
 jvmIndex = ocapi_jvms.toInteger()
 jvmlist = (0..jvmIndex).toList()
 exec_num = ocapi_jvms.toInteger()-1
@@ -61,7 +79,7 @@ node {
             muid = jvm == 1 ? uid : "${uid}${jvm}"
             sh "echo cd pipeline.scripts/ocapirest && echo docker-compose -f ../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
         }
-        for ( i in 1..parallelism){
+        for ( i in 1..testRunNum){
         echo "This is ecom version ${i}"
         }
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
