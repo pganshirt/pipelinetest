@@ -29,6 +29,11 @@ for (suite in result) {
   ++counter
  }
 
+lm.each{ key, value ->
+  echo "Key is: ${key}"
+  echo "Value is : ${value}"
+}
+
 echo "This is the map:  ${lm}"
 
 
