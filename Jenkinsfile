@@ -18,16 +18,16 @@ testRunNum = 2
 bid = "${env.JOB_NAME.replace('-','')}${env.BUILD_NUMBER}"
 uid = "${bid}ocapirest"
 def testLists = testSuites.collate( testSuites.size().intdiv(testRunNum))
-if (result.size() > testRunNum){
-  result[testRunNum-1] += (result[testRunNum])
-  result.remove(result[testRunNum])
+if (testLists.size() > testRunNum){
+  testLists[testRunNum-1] += (testLists[testRunNum])
+  testLists.remove(result[testRunNum])
 }
 def testMap = []
 for ( int i = 0; i < testLists.size(); i++) {
   testMap[i]=[uid+(i+1), testLists[i]]
 }
 echo testMap
-echo "This is the map:  ${lm}"
+
 
 
 jvmIndex = ocapi_jvms.toInteger()
