@@ -79,6 +79,7 @@ node {
         echo "This is ecom version ${i}"
         }
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
+        myModule.launchEcomContainers(testMap)
     }
     stage('Test') {
         echo 'Building....'
