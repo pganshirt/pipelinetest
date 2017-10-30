@@ -11,22 +11,12 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
-testSuites = ["test_rest","test_rest_batch","test_rest_csc","test_rest_meta",
+def testSuites = ["test_rest","test_rest_batch","test_rest_csc","test_rest_meta",
               "test_rest_data","test_rest_shop","test_rest_shop2","test_rest_oauth",
               "test_rest_webdav","test_rest_integration","test_ecom_server"]
 testRunNum = 2
 bid = "${env.JOB_NAME.replace('-','')}${env.BUILD_NUMBER}"
 uid = "${bid}ocapirest"
-def testLists = testSuites.collate( testSuites.size().intdiv(testRunNum))
-if (testLists.size() > testRunNum){
-  testLists[testRunNum-1] += (testLists[testRunNum])
-  testLists.remove(testLists[testRunNum])
-}
-def testMap = []
-for ( int i = 0; i < testLists.size(); i++) {
-  testMap[i]=[uid+(i+1), testLists[i]]
-}
-echo "${testMap}"
 
 jvmIndex = ocapi_jvms.toInteger()
 jvmlist = (0..jvmIndex).toList()
@@ -71,6 +61,16 @@ node {
               [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
     myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
+        def testLists = testSuites.collate( testSuites.size().intdiv(testRunNum))
+        if (testLists.size() > testRunNum){
+          testLists[testRunNum-1] += (testLists[testRunNum])
+          testLists.remove(testLists[testRunNum])
+        }
+        def testMap = []
+        for ( int i = 0; i < testLists.size(); i++) {
+          testMap[i]=[uid+(i+1), testLists[i]]
+        }
+        echo "${testMap}"
         for (jvm in jvmlist) {
             muid = jvm == 1 ? uid : "${uid}${jvm}"
             sh "echo cd pipeline.scripts/ocapirest && echo docker-compose -f ../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
