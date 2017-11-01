@@ -71,7 +71,7 @@ node {
           testMap[i]=[uid+(i+1), testLists[i]]
         }
         def myClass = testMap[0][0].getClass()
-        echo ${myClass}
+        echo "${myClass}"
         echo "${testMap}"
         for (jvm in jvmlist) {
             muid = jvm == 1 ? uid : "${uid}${jvm}"
