@@ -84,7 +84,9 @@ node {
           'ocapitestset1': {
             def ocapitestset1Uid = testMap[0][0]
             def ocapitestset1 = testMap[0][1]
-            myInternalFunction('testuid',ocapitestset1,'myincludePattern')
+            for (String testSuite : ocapitestset1){
+              myInternalFunction('testuid',testSuite,'myincludePattern')
+            }
           },
           'ocapitestset2': {
             myInternalFunction('testuid2','testSuiteSuite2','myincludePattern2')
