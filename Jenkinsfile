@@ -96,7 +96,7 @@ node {
     }
 }
 def myInternalFunction (String uid, String testSuite, String includePattern) {
-  echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePatter}"
+  echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePattern}"
 }
 
 myModule.colorStage()
