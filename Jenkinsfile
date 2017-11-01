@@ -80,10 +80,10 @@ node {
         }
         parallel(
           'ocapitestset1': {
-            myInternalFunction()
+            myInternalFunction('testuid','testSuiteSuite','myincludePattern')
           },
           'ocapitestset2': {
-            myInternalFunction()
+            myInternalFunction('testuid2','testSuiteSuite2','myincludePattern2')
           })      
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
         myModule.launchEcomContainers(testMap)
@@ -95,8 +95,8 @@ node {
         echo 'Deploying....'
     }
 }
-def myInternalFunction () {
-  echo "myInternalFunction has been called"
+def myInternalFunction (String uid, String testSuite, String includePattern) {
+  echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePatter}"
 }
 
 myModule.colorStage()
