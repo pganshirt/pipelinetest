@@ -82,7 +82,9 @@ node {
         }
         parallel(
           'ocapitestset1': {
-            myInternalFunction('testuid','testSuiteSuite','myincludePattern')
+            def ocapitestset1Uid = testMap[0][0]
+            def ocapitestset1 = testMap[0][1]
+            myInternalFunction('testuid',ocapitestset1,'myincludePattern')
           },
           'ocapitestset2': {
             myInternalFunction('testuid2','testSuiteSuite2','myincludePattern2')
