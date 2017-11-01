@@ -70,6 +70,7 @@ node {
         for ( int i = 0; i < testLists.size(); i++) {
           testMap[i]=[uid+(i+1), testLists[i]]
         }
+        echo testMap[0][0].getClass()
         echo "${testMap}"
         for (jvm in jvmlist) {
             muid = jvm == 1 ? uid : "${uid}${jvm}"
