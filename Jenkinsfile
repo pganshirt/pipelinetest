@@ -14,7 +14,7 @@ def initParams () {
 def testSuites = ["test_rest","test_rest_batch","test_rest_csc","test_rest_meta",
               "test_rest_data","test_rest_shop","test_rest_shop2","test_rest_oauth",
               "test_rest_webdav","test_rest_integration","test_ecom_server"]
-testRunNum = 2
+def testRunNum = 2
 bid = "${env.JOB_NAME.replace('-','')}${env.BUILD_NUMBER}"
 uid = "${bid}ocapirest"
 
@@ -75,7 +75,7 @@ node {
             myInternalFunction(testUid, tests, 'myincludePattern')
           } 
         }
-        myOtherFunction(testMap)
+        myOtherFunction(uid,testRunNum)
         //def myClass = testMap[0][1].getClass()
         // echo "${myClass}"
         //echo "${testMap}"
@@ -100,10 +100,11 @@ node {
 def myInternalFunction (String uid, List testSuite, String includePattern) {
   echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePattern}"
 }
-def myOtherFunction (Map tests) {
-        for (key in tests.keySet()) {
-        echo "This is a key ${key}"
-      }
+def myOtherFunction (String uid, int testRunNum) {
+    for (for int i = 0;i < testRunNum; i++) {
+        muid = uid+(i+1)
+      echo "printing muid: ${muid}"
+    }
 }
 
 myModule.colorStage()
