@@ -68,7 +68,7 @@ node {
         }
         def testMap = [:]
         for ( int i = 0; i < testLists.size(); i++) {
-          index = i
+          def index = i
           testMap["ocapiTests${i}"]= {
             def tests = testLists[index]
             def testUid = uid+(index+1)
