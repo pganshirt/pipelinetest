@@ -68,9 +68,10 @@ node {
         }
         def testMap = [:]
         for ( int i = 0; i < testLists.size(); i++) {
+          index = i
           testMap["ocapiTests${i}"]= {
-            def tests = testLists[i]
-            def testUid = uid+(i+1)
+            def tests = testLists[index]
+            def testUid = uid+(index+1)
             myInternalFunction(testUid, tests, 'myincludePattern')
           } 
         }
