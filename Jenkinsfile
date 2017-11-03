@@ -75,7 +75,7 @@ node {
           } 
         }
         //def myClass = testMap[0][1].getClass()
-        echo "${myClass}"
+        // echo "${myClass}"
         //echo "${testMap}"
         for (jvm in jvmlist) {
             muid = jvm == 1 ? uid : "${uid}${jvm}"
