@@ -101,7 +101,7 @@ def myInternalFunction (String uid, List testSuite, String includePattern) {
   echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePattern}"
 }
 def myOtherFunction (String uid, int testRunNum) {
-    for (for int i = 0;i < testRunNum; i++) {
+    for (int i = 0;i < testRunNum; i++) {
         muid = uid+(i+1)
       echo "printing muid: ${muid}"
     }
