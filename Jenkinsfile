@@ -75,9 +75,7 @@ node {
             myInternalFunction(testUid, tests, 'myincludePattern')
           } 
         }
-      for (key in testMap.keySet()) {
-        echo "This is a key ${key}"
-      }
+        myOtherFunction(testMap)
         //def myClass = testMap[0][1].getClass()
         // echo "${myClass}"
         //echo "${testMap}"
@@ -101,6 +99,11 @@ node {
 }
 def myInternalFunction (String uid, List testSuite, String includePattern) {
   echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePattern}"
+}
+def myOtherFunction (Map tests) {
+        for (key in tests.keySet()) {
+        echo "This is a key ${key}"
+      }
 }
 
 myModule.colorStage()
