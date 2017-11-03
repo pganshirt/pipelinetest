@@ -61,12 +61,12 @@ node {
               [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
     myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
+        testMap = [:]
         def testLists = testSuites.collate( testSuites.size().intdiv(testRunNum))
         if (testLists.size() > testRunNum){
           testLists[testRunNum-1] += (testLists[testRunNum])
           testLists.remove(testLists[testRunNum])
         }
-        def testMap = [:]
         for ( int i = 0; i < testLists.size(); i++) {
           def index = i
           testMap["ocapiTests${i}"]= {
