@@ -75,6 +75,9 @@ node {
             myInternalFunction(testUid, tests, 'myincludePattern')
           } 
         }
+      for (key in testMap.keySet()) {
+        echo "This is a key ${key}"
+      }
         //def myClass = testMap[0][1].getClass()
         // echo "${myClass}"
         //echo "${testMap}"
