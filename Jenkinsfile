@@ -95,7 +95,7 @@ node {
         echo 'Deploying....'
     }
 }
-def myInternalFunction (String uid, String testSuite, String includePattern) {
+def myInternalFunction (String uid, List testSuite, String includePattern) {
   echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePattern}"
 }
 
