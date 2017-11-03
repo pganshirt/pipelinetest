@@ -74,9 +74,9 @@ node {
             //myInternalFunction(testUid, tests, 'myincludePattern')
           } 
         }
-        def myClass = testMap[0][1].getClass()
+        //def myClass = testMap[0][1].getClass()
         echo "${myClass}"
-        echo "${testMap}"
+        //echo "${testMap}"
         for (jvm in jvmlist) {
             muid = jvm == 1 ? uid : "${uid}${jvm}"
             sh "echo cd pipeline.scripts/ocapirest && echo docker-compose -f ../ecom-base-compose.yml -f docker-compose.yml -p ${muid} up -d"
@@ -86,7 +86,7 @@ node {
         }
         //parallel testMap      
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
-        myModule.launchEcomContainers(testMap)
+        //myModule.launchEcomContainers(testMap)
     }
     stage('Test') {
         echo 'Building....'
