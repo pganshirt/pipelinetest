@@ -68,7 +68,11 @@ node {
         }
         def testMap = []
         for ( int i = 0; i < testLists.size(); i++) {
-          testMap[i]=[uid+(i+1), testLists[i]]
+          testMap[i]= {
+            def testSuites = testLists[i]
+            def testUid = uid+(i+1)
+            myInternalFunction(testUid, testSuites, 'myincludePattern')
+          } 
         }
         def myClass = testMap[0][1].getClass()
         echo "${myClass}"
@@ -80,17 +84,7 @@ node {
         for ( i in 1..testRunNum){
         echo "This is ecom version ${i}"
         }
-        parallel(
-          'ocapitestset1': {
-            def ocapitestset1Uid = testMap[0][0]
-            def ocapitestset1 = testMap[0][1]
-            for (String testSuite : ocapitestset1){
-              myInternalFunction('testuid',testSuite,'myincludePattern')
-            }
-          },
-          'ocapitestset2': {
-            myInternalFunction('testuid2','testSuiteSuite2','myincludePattern2')
-          })      
+        parallel testMap      
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
         myModule.launchEcomContainers(testMap)
     }
