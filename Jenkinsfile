@@ -66,9 +66,9 @@ node {
           testLists[testRunNum-1] += (testLists[testRunNum])
           testLists.remove(testLists[testRunNum])
         }
-        def testMap = []
+        def testMap = [:]
         for ( int i = 0; i < testLists.size(); i++) {
-          testMap[i]= {
+          testMap["ocapiTests${i}"]= {
             def tests = testLists[i]
             def testUid = uid+(i+1)
             myInternalFunction(testUid, tests, 'myincludePattern')
