@@ -84,7 +84,7 @@ node {
         for ( i in 1..testRunNum){
         echo "This is ecom version ${i}"
         }
-        //parallel testMap      
+        parallel testMap      
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
         //myModule.launchEcomContainers(testMap)
     }
