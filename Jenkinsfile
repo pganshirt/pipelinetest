@@ -70,8 +70,8 @@ node {
         for ( int i = 0; i < testLists.size(); i++) {
           testMap["ocapiTests${i}"]= {
             def tests = testLists[i]
-            //def testUid = uid+(i+1)
-            //myInternalFunction(testUid, tests, 'myincludePattern')
+            def testUid = uid+(i+1)
+            myInternalFunction(testUid, tests, 'myincludePattern')
           } 
         }
         //def myClass = testMap[0][1].getClass()
