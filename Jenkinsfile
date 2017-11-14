@@ -71,7 +71,7 @@ node {
         for ( int i = 0; i < testLists.size(); i++) {
           def index = i
           sh "echo ${testLists[index]} >> archive/ocapirest/ocapiTestSet${index+1}.txt || true"
-          testMap["ocapiTests"+(i+1)]= {
+          testMap["ocapiTests${i+1}"]= {
             def tests = testLists[index]
             def testUid = uid+(index+1)
             myInternalFunction(testUid, tests, 'myincludePattern')
