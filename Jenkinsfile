@@ -61,6 +61,7 @@ node {
               [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
     myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
+        sh "mkdir -p archive/ocapirest"
         testMap = [:]
         def testLists = testSuites.collate( testSuites.size().intdiv(testRunNum))
         if (testLists.size() > testRunNum){
@@ -69,6 +70,7 @@ node {
         }
         for ( int i = 0; i < testLists.size(); i++) {
           def index = i
+          sh "echo ${testList[index]} >> archive/ocapirest/ocapiTestSet${index+1}.txt || true"
           testMap["ocapiTests"+(i+1)]= {
             def tests = testLists[index]
             def testUid = uid+(index+1)
