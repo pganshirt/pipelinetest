@@ -108,5 +108,5 @@ def myOtherFunction (String uid, int testRunNum) {
       echo "printing muid: ${muid}"
     }
 }
-currentBuild.setDescription("This is a test project")
+currentBuild.setDescription("This is ecom version (.*)", "This is a test project")
 myModule.colorStage()
