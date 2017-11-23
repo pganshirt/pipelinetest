@@ -116,6 +116,7 @@ myModule.colorStage()
 
 def matcher = manager.getLogMatcher("Uploaded:(.*)/ecom\\.csc/(.*)/.*tgz.*")
 if(matcher?.matches()) {
-  myProp = matcher.group(2)
-  currentBuild.setDescription(myProp)
+  myVar = matcher.group(1)
+  myVer = matcher.group(2)
+  currentBuild.setDescription(myVar + "<br />" + myVer)
 }
