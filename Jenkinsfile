@@ -12,7 +12,7 @@ def initParams () {
               'master'
 }
 
-echo "Uploaded: http://nexusmaster.lab.demandware.net/content/repositories/snapshots/dw/ui/ecom.csc/923ab4b-SNAPSHOT/ecom.csc-923ab4b-20171117.131148-1-bin.tgz"
+echo "Uploaded: http://nexusmaster.lab.demandware.net/content/repositories/snapshots/dw/ui/ecom.csc/923ab4b-SNAPSHOT/ecom.csc-923ab4b-20171117.131148-1-bin.tgz (2195 KB at 15560.6 KB/sec)"
 
 def testSuites = ["test_rest","test_rest_batch","test_rest_csc","test_rest_meta",
               "test_rest_data","test_rest_shop","test_rest_shop2","test_rest_oauth",
