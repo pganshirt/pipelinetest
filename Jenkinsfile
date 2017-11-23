@@ -11,7 +11,9 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
-echo "Uploaded: http://es"
+
+echo "Uploaded: http://nexusmaster.lab.demandware.net/content/repository"
+
 def testSuites = ["test_rest","test_rest_batch","test_rest_csc","test_rest_meta",
               "test_rest_data","test_rest_shop","test_rest_shop2","test_rest_oauth",
               "test_rest_webdav","test_rest_integration","test_ecom_server"]
@@ -109,7 +111,7 @@ def myOtherFunction (String uid, int testRunNum) {
       echo "printing muid: ${muid}"
     }
 }
-def matcher = manager.getLogMatcher("Uploaded:(.*)")
+def matcher = manager.getLogMatcher("Uploaded:.*/content/(.*)")
 if(matcher?.matches()) {
     def myProp = matcher.group(1)
   echo "MyProp is ${myProp}"
