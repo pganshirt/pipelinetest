@@ -113,8 +113,8 @@ def myOtherFunction (String uid, int testRunNum) {
 }
 //currentBuild.setDescription("This is ecom version (.*)", "This is a test project")
 myModule.colorStage()
-
-def matcher = manager.getLogMatcher("Uploaded:(.*)/ecom\\.csc/(.*)/ecom\\.csc-(.*)\\.tgz.*")
+def uploadRegex = "Uploaded:(.*)/ecom\\.csc/(.*)/ecom\\.csc-(.*)\\.tgz.*"
+def matcher = manager.getLogMatcher(uploadRegex)
 if(matcher?.matches()) {
   myVar = matcher.group(2)
   myVer = matcher.group(3)
