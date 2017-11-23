@@ -108,6 +108,6 @@ def myOtherFunction (String uid, int testRunNum) {
       echo "printing muid: ${muid}"
     }
 }
-manager.getLogMatcher("This is ecom version (.*)")
+echo manager.getLogMatcher("This is ecom version (.*)")
 //currentBuild.setDescription("This is ecom version (.*)", "This is a test project")
 myModule.colorStage()
