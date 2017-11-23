@@ -118,5 +118,5 @@ def matcher = manager.getLogMatcher("Uploaded:(.*)/ecom\\.csc/(.*)/.*tgz.*")
 if(matcher?.matches()) {
   myVar = matcher.group(1)
   myVer = matcher.group(2)
-  currentBuild.setDescription(myVar + "<br>" + myVer)
+  currentBuild.setDescription(myVar + "\n" + myVer)
 }
