@@ -109,9 +109,9 @@ def myOtherFunction (String uid, int testRunNum) {
       echo "printing muid: ${muid}"
     }
 }
-def matcher = manager.getLogMatcher("This is ecom version (.*)")
+def matcher = manager.getLogMatcher("Uploaded:(.*)/repositories/snapshots/dw/ui/ecom\.csc/(.*)/ecom.csc-(.*)\.tgz")
 if(matcher?.matches()) {
-    def myProp = matcher.group(1)
+    def myProp = matcher.group(2)
   echo "MyProp is ${myProp}"
 }
 //currentBuild.setDescription("This is ecom version (.*)", "This is a test project")
