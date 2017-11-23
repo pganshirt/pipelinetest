@@ -30,6 +30,7 @@ mylist = (0..exec_num).collect {
           }.join(" ")
 echo "${mylist}"
 echo "This is runTest ${runTest}.  This is params.runTest ${params.runTest}"
+echo "Uploading: http://nexusmaster.lab.demandware.net/content/repositories/snapshots/dw/ui/ecom.csc/923ab4b-SNAPSHOT/ecom.csc-923ab4b-20171117.131148-1-bin.tgz"
 if (runTest) {
     echo "We should run the tests"
 }
