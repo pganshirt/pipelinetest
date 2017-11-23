@@ -109,7 +109,7 @@ def myOtherFunction (String uid, int testRunNum) {
       echo "printing muid: ${muid}"
     }
 }
-def matcher = manager.getLogMatcher('Uploaded:.*/repositories/snapshots/dw/ui/ecom\.csc/(.*)/ecom\.csc-.*\.tgz')
+def matcher = manager.getLogMatcher("Uploaded:.*/repositories/snapshots/dw/ui/ecom\.csc/(.*)/ecom\.csc-.*\.tgz")
 if(matcher?.matches()) {
     def myProp = matcher.group(1)
   echo "MyProp is ${myProp}"
