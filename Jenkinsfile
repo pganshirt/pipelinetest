@@ -108,7 +108,7 @@ def myOtherFunction (String uid, int testRunNum) {
       echo "printing muid: ${muid}"
     }
 }
-manager.getLogMatcher("This is ecom version (.*)")
+def matcher = manager.getLogMatcher("This is ecom version (.*)")
 if(matcher?.matches()) {
     def myProp = matcher.group(1)
   echo "MyProp is ${myProp}"
