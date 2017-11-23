@@ -11,6 +11,7 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
+echo "Uploaded: http://nexusmaster.lab.demandware.net/content/repositories/snapshots/dw/ui/ecom.csc/923ab4b-SNAPSHOT/ecom.csc-923ab4b-20171117.131148-1-bin.tgz (2195 KB at 15560.6 KB/sec)"
 def testSuites = ["test_rest","test_rest_batch","test_rest_csc","test_rest_meta",
               "test_rest_data","test_rest_shop","test_rest_shop2","test_rest_oauth",
               "test_rest_webdav","test_rest_integration","test_ecom_server"]
@@ -30,7 +31,6 @@ mylist = (0..exec_num).collect {
           }.join(" ")
 echo "${mylist}"
 echo "This is runTest ${runTest}.  This is params.runTest ${params.runTest}"
-echo "Uploaded: http://nexusmaster.lab.demandware.net/content/repositories/snapshots/dw/ui/ecom.csc/923ab4b-SNAPSHOT/ecom.csc-923ab4b-20171117.131148-1-bin.tgz (2195 KB at 15560.6 KB/sec)"
 if (runTest) {
     echo "We should run the tests"
 }
