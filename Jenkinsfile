@@ -12,7 +12,7 @@ def initParams () {
               'master'
 }
 
-echo "Uploaded: http://nexusmaster.lab.demandware.net/content/repositories/snapshots/dw/ui/ecom.csc/923ab4b-SNAPSHOT/ecom.csc-923ab4b-20171117.131148-1-bin.tgz"
+echo "Uploaded: http://nexusmaster.lab.demandware.net/content/repositories/snapshots/dw/ui/ecomcsc/923ab4b-SNAPSHOT/ecom.csc-923ab4b-20171117.131148-1-bin.tgz"
 
 def testSuites = ["test_rest","test_rest_batch","test_rest_csc","test_rest_meta",
               "test_rest_data","test_rest_shop","test_rest_shop2","test_rest_oauth",
@@ -111,7 +111,7 @@ def myOtherFunction (String uid, int testRunNum) {
       echo "printing muid: ${muid}"
     }
 }
-def matcher = manager.getLogMatcher("Uploaded:.*/ecom\\.csc/(.*)/")
+def matcher = manager.getLogMatcher("Uploaded:.*/ecomcsc/(.*)/")
 if(matcher?.matches()) {
     def myProp = matcher.group(1)
   echo "MyProp is ${myProp}"
