@@ -111,10 +111,11 @@ def myOtherFunction (String uid, int testRunNum) {
       echo "printing muid: ${muid}"
     }
 }
+//currentBuild.setDescription("This is ecom version (.*)", "This is a test project")
+myModule.colorStage()
+
 def matcher = manager.getLogMatcher("Uploaded:.*/ecom\\.csc/(.*)/.*tgz.*")
 if(matcher?.matches()) {
   myProp = matcher.group(1)
   currentBuild.setDescription(myProp)
 }
-//currentBuild.setDescription("This is ecom version (.*)", "This is a test project")
-myModule.colorStage()
