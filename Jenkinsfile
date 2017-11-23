@@ -113,8 +113,8 @@ def myOtherFunction (String uid, int testRunNum) {
 }
 def matcher = manager.getLogMatcher("Uploaded:.*/ecom\\.csc/(.*)/.*tgz.*")
 if(matcher?.matches()) {
-    def myProp = matcher.group(1)
-  echo "MyProp is ${myProp}"
+  def myProp = matcher.group(1)
+  currentBuild.setDescription(myProp)
 }
 //currentBuild.setDescription("This is ecom version (.*)", "This is a test project")
 myModule.colorStage()
