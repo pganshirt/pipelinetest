@@ -102,7 +102,8 @@ node {
     stage('Deploy') {
         echo 'Deploying....'
         def result=build job: 'downstream'
-        UI_BM_VERSION = result.getDescription().substring(result.getDescription().indexOf(":") + 1)
+        //UI_BM_VERSION = result.getDescription().substring(result.getDescription().indexOf(":") + 1)
+        UI_BM_VERSION = result.getDescription()
         echo "This is UI_BM_VERSION: ${UI_BM_VERSION}"
     }
 }
