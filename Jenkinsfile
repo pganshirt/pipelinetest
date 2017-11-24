@@ -103,7 +103,7 @@ node {
         echo 'Deploying....'
         def result=build job: 'downstream'
         //UI_BM_VERSION = result.getDescription().substring(result.getDescription().indexOf(":") + 1)
-        UI_BM_VERSION = result.getDescription()[0]
+        UI_BM_VERSION = result.getDescription().splitEachLine()[0]
         echo "This is UI_BM_VERSION: ${UI_BM_VERSION}"
     }
 }
