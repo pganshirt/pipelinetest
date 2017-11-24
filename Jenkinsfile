@@ -102,6 +102,8 @@ node {
     stage('Deploy') {
         echo 'Deploying....'
         def result=build job: 'downstream'
+        UI_BM_VERSION = result.getDescription().substring(result.getDescription().indexOf(":") + 1)
+        echo "This is UI_BM_VERSION: ${UI_BM_VERSION}"
     }
 }
 def myInternalFunction (String uid, List testSuite, String includePattern) {
