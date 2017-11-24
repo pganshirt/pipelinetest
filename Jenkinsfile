@@ -101,6 +101,7 @@ node {
     }
     stage('Deploy') {
         echo 'Deploying....'
+        def result=build job: 'downstream'
     }
 }
 def myInternalFunction (String uid, List testSuite, String includePattern) {
