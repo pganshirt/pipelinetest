@@ -21,7 +21,7 @@ else
     commands = ' && npm run grunt test && cp -r /tmp/workspace/target/reports /testresults'
     echo commands
 }
-if (env.JOB_NAME == test-pipeline) {
+if (env.JOB_NAME == 'test-pipeline') {
   echo "This is the test-pipeline job"
 }
 def branch = 'master'
