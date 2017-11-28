@@ -21,7 +21,9 @@ else
     commands = ' && npm run grunt test && cp -r /tmp/workspace/target/reports /testresults'
     echo commands
 }
-echo env.JOB_NAME
+if (env.JOB_NAME == test-pipeline) {
+  echo "This is the test-pipeline job"
+}
 def branch = 'master'
 build_image='docker-registry.releng.demandware.net/commerce_ui/ui-build-base:0.5.4'
 echo "Uploaded: http://nexusmaster.lab.demandware.net/content/repositories/snapshots/dw/ui/ecom.csc/923ab4b-SNAPSHOT/ecom.csc-923ab4b-20171117.131148-1-bin.tgz (2195 KB at 15560.6 KB/sec)"
