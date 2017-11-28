@@ -14,10 +14,12 @@ def initParams () {
 if (params.skip_tests)
 {
     commands = ' '
+    echo commands
 }
 else
 {
     commands = ' && npm run grunt test && cp -r /tmp/workspace/target/reports /testresults'
+    echo commands
 }
 echo env.JOB_NAME
 def branch = 'master'
