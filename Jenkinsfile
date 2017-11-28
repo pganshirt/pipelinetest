@@ -11,6 +11,7 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
+echo env.JOB_NAME
 def branch = 'master'
 build_image='docker-registry.releng.demandware.net/commerce_ui/ui-build-base:0.5.4'
 echo "Uploaded: http://nexusmaster.lab.demandware.net/content/repositories/snapshots/dw/ui/ecom.csc/923ab4b-SNAPSHOT/ecom.csc-923ab4b-20171117.131148-1-bin.tgz (2195 KB at 15560.6 KB/sec)"
