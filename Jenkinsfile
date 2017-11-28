@@ -11,6 +11,14 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
+if (params.skip_tests)
+{
+    commands = ' '
+}
+else
+{
+    commands = ' && npm run grunt test && cp -r /tmp/workspace/target/reports /testresults'
+}
 echo env.JOB_NAME
 def branch = 'master'
 build_image='docker-registry.releng.demandware.net/commerce_ui/ui-build-base:0.5.4'
