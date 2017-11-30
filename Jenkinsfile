@@ -11,6 +11,9 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
+if (env.release == 'true'){
+  echo "this is a release build"
+}
 if (params.skip_tests)
 {
     commands = ' '
