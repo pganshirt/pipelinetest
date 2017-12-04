@@ -14,7 +14,9 @@ def initParams () {
 release_version = params.release_version
 if (release_version){
   if (! release_version ==~ /^\d+\.\d+\.\d+$/){
-    echo "That is a valid version"
+    echo "Not a valid version number. Please enter one that follows the semantic versioning pattern '{major}.{minor}.{patch}', like '12.3.4'."
+    currentBuild.result = 'UNSTABLE'
+    return
   }
   echo "release_version is ${release_version}"
 }
