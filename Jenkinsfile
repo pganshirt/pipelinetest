@@ -12,7 +12,7 @@ def initParams () {
               'master'
 }
 release_version = params.release_version
-if (release_version != ''){
+if (release_version){
   echo "release_version is ${release_version}"
 }
 if (env.release == 'true'){
