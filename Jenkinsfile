@@ -11,6 +11,7 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
+release_version = env.release_version ?: params.release_version ?: ''
 if (env.release == 'true'){
   echo "this is a release build"
 }
