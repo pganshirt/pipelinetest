@@ -18,7 +18,7 @@ if (release_version?.trim()){
 if (release_version || release_version == ''){
   if (release_version !=~ /^\d+\.\d+\.\d+$/){
     echo "Not a valid version number. Please enter one that follows the"\
-         +" semantic versioning pattern '{major}.{minor}.{patch}', like '12.3.4'."
+         +" semantic versioning pattern '{major}.{minor}.{patch}'"
     currentBuild.result = 'FAILURE'
     return
   }
