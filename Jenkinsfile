@@ -13,7 +13,7 @@ def initParams () {
 }
 release_version = params.release_version
 if (release_version){
-  if (release_version ~= "^\d+\.\d+\.\d+$"){
+  if (release_version ==~ ^\d+\.\d+\.\d+$){
     echo "That is a valid version"
   }
   echo "release_version is ${release_version}"
