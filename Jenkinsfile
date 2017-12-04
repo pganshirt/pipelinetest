@@ -12,8 +12,8 @@ def initParams () {
               'master'
 }
 release_version = params.release_version
-if (release_version == ''){
-  echo "release_version is defined but empty"
+if (release_version?.trim()){
+  echo "trimmed"
 }
 if (release_version || release_version == ''){
   if (release_version !=~ /^\d+\.\d+\.\d+$/){
