@@ -15,7 +15,7 @@ release_version = params.release_version
 if (release_version == ''){
   echo "release_version is defined but empty"
 }
-if (params.release_version){
+if (release_version){
   if (release_version !=~ /^\d+\.\d+\.\d+$/){
     echo "Not a valid version number. Please enter one that follows the semantic versioning pattern '{major}.{minor}.{patch}', like '12.3.4'."
     currentBuild.result = 'UNSTABLE'
