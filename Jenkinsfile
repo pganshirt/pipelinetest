@@ -12,9 +12,6 @@ def initParams () {
               'master'
 }
 release_version = params.release_version
-if (release_version?.trim()){
-  echo "trimmed"
-}
 if (release_version || release_version == ''){
   if (release_version !=~ /^\d+\.\d+\.\d+$/){
     echo "Not a valid version number. Please enter one that follows the"\
