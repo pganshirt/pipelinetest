@@ -91,6 +91,9 @@ node {
               [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
   dir('scripts'){
     sh "pwd"
+    ecom_commit = sh returnStdout: true, script: "git rev-parse HEAD"
+    ecom_commit = ecom_commit.trim()
+    echo ecom_commit
   }
   sh "pwd"
     myModule = load 'scripts/workflow/test.groovy'
