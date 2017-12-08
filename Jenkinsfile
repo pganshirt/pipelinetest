@@ -89,6 +89,10 @@ node {
               [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'scripts']],
               submoduleCfg: [], userRemoteConfigs: 
               [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
+  dir('scripts'){
+    sh "pwd"
+  }
+  sh "pwd"
     myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
         sh "mkdir -p archive/ocapirest"
