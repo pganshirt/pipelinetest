@@ -11,20 +11,6 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
-def changeLogSets = currentBuild.changeSets
-for (int i = 0; i < changeLogSets.size(); i++) {
-    def entries = changeLogSets[i].items
-    for (int j = 0; j < entries.length; j++) {
-        def entry = entries[j]
-        echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
-        def files = new ArrayList(entry.affectedFiles)
-        for (int k = 0; k < files.size(); k++) {
-            def file = files[k]
-            echo "  ${file.editType.name} ${file.path}"
-        }
-    }
-}
-echo "${env.BUILD_USER_ID}"
 release_version = params.release_version
 if (release_version || release_version == ''){
   if (!(release_version ==~ /^\d+\.\d+\.\d+$/)){
