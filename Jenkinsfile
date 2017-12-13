@@ -11,6 +11,10 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
+def job = Jenkins.getInstance().getItemByFullName(env.JOB_BASE_NAME, Job.class)
+def build = job.getBuildByNumber(env.BUILD_ID as int)
+def userId = build.getCause(Cause.UserIdCause).getUserId()
+
 release_version = params.release_version
 if (release_version || release_version == ''){
   if (!(release_version ==~ /^\d+\.\d+\.\d+$/)){
@@ -95,6 +99,7 @@ node {
     ecom_commit = ecom_commit.trim()
     echo ecom_commit
   }
+
   sh "pwd"
     myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
@@ -127,6 +132,13 @@ node {
         }
         parallel testMap      
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
+          def data = [
+            buildinfo:[
+              buildNumber: "${env.BUILD_NUMBER}",
+              User: "${userId}
+            ]
+          ]
+        writeJSON(file: 'buildInfo.json', json: data)
         //myModule.launchEcomContainers(testMap)
     }
     stage('Test') {
@@ -158,7 +170,4 @@ if(matcher?.matches()) {
   myVer = matcher.group(3)
   currentBuild.setDescription(myVar + "\n" + myVer + "\n" + "Branch:" + branch)
 }
-def job = Jenkins.getInstance().getItemByFullName(env.JOB_BASE_NAME, Job.class)
-def build = job.getBuildByNumber(env.BUILD_ID as int)
-def userId = build.getCause(Cause.UserIdCause).getUserId()
-echo userId
+
