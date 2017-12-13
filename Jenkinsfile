@@ -87,7 +87,6 @@ for (String item : params) {
 
 echo "user_branch is ${user_branch}"
 node {
-  
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
               doGenerateSubmoduleConfigurations: false, extensions: 
               [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'scripts']],
