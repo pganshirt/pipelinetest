@@ -1,4 +1,4 @@
-
+import groovy.json.JsonOutput
 
 def initParams () {
   script_debugger_tests_branch = 'myTestBranch'
@@ -137,7 +137,8 @@ node {
               User: "pganshirt"
             ]
           ]
-        writeJSON(file: 'buildInfo.json', json: data)
+        def json = JsonOutput.toJson(data)
+        writeJSON(file: 'buildInfo.json', json: json)
         //myModule.launchEcomContainers(testMap)
     }
     stage('Test') {
