@@ -24,6 +24,7 @@ for (int i = 0; i < changeLogSets.size(); i++) {
         }
     }
 }
+echo "${env.BUILD_USER}"
 release_version = params.release_version
 if (release_version || release_version == ''){
   if (!(release_version ==~ /^\d+\.\d+\.\d+$/)){
