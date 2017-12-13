@@ -11,9 +11,6 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
-job = Jenkins.getInstance().getItemByFullName(env.JOB_BASE_NAME, Job.class)
-def build = job.getBuildByNumber(env.BUILD_ID as int)
-def userId = build.getCause(Cause.UserIdCause).getUserId()
 
 release_version = params.release_version
 if (release_version || release_version == ''){
@@ -98,7 +95,9 @@ node {
     ecom_commit = ecom_commit.trim()
     echo ecom_commit
   }
-
+  job = Jenkins.getInstance().getItemByFullName(env.JOB_BASE_NAME, Job.class)
+  build = job.getBuildByNumber(env.BUILD_ID as int)
+  userId = build.getCause(Cause.UserIdCause).getUserId()
   sh "pwd"
     myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
