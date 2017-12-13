@@ -127,12 +127,15 @@ node {
         for ( i in 1..testRunNum){
         echo "This is ecom version ${i}"
         }
-        parallel testMap      
+        parallel testMap
+        currentBuild.result = 'SUCCESS'
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
           def data = [
             buildinfo:[
               buildNumber: "${env.BUILD_NUMBER}",
-              User: "${userId}"
+              User: "${userId}",
+              buildResult: "${currentBuild.result}",
+              buildId: "${env.BUILD_ID}"
             ]
           ]
         def jsonOut = readJSON text: groovy.json.JsonOutput.toJson(data)
