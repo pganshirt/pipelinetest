@@ -97,7 +97,6 @@ node {
     ecom_commit = ecom_commit.trim()
     echo ecom_commit
   }
-  job = Jenkins.getInstance().getItemByFullName(env.JOB_BASE_NAME, Job.class)
   sh "pwd"
     myModule = load 'scripts/workflow/test.groovy'
     stage('Build') {
