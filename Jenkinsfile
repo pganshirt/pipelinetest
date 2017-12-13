@@ -11,9 +11,9 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
-//def job = Jenkins.getInstance().getItemByFullName(env.JOB_BASE_NAME, Job.class)
-//def build = job.getBuildByNumber(env.BUILD_ID as int)
-//def userId = build.getCause(Cause.UserIdCause).getUserId()
+job = Jenkins.getInstance().getItemByFullName(env.JOB_BASE_NAME, Job.class)
+def build = job.getBuildByNumber(env.BUILD_ID as int)
+def userId = build.getCause(Cause.UserIdCause).getUserId()
 
 release_version = params.release_version
 if (release_version || release_version == ''){
@@ -134,7 +134,7 @@ node {
           def data = [
             buildinfo:[
               buildNumber: "${env.BUILD_NUMBER}",
-              User: "pganshirt"
+              User: "${userId}"
             ]
           ]
         def jsonOut = readJSON text: groovy.json.JsonOutput.toJson(data)
