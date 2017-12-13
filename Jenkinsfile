@@ -135,7 +135,7 @@ node {
           def data = [
             buildinfo:[
               buildNumber: "${env.BUILD_NUMBER}",
-              User: "${userId}
+              User: "${userId}"
             ]
           ]
         writeJSON(file: 'buildInfo.json', json: data)
