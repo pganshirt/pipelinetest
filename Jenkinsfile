@@ -1,5 +1,5 @@
 import groovy.json.*
-job = Jenkins.getInstance().getItemByFullName(env.JOB_BASE_NAME, Job.class)
+def job = Jenkins.getInstance().getItemByFullName(env.JOB_BASE_NAME, Job.class)
 //build = job.getBuildByNumber(env.BUILD_ID as int)
 //userId = build.getCause(Cause.UserIdCause).getUserId()
 def initParams () {
