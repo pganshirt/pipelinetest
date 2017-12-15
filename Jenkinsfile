@@ -159,7 +159,6 @@ node {
               buildNumber: "${env.BUILD_NUMBER}",
               User: "${userId}",
               buildResult: "${currentBuild.result}",
-              buildId: "${env.BUILD_ID}",
               timeStamp: "${stime}",
               changeSet: getChangeString()
             ]
