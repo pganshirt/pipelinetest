@@ -1,8 +1,5 @@
 import groovy.json.*
 echo "This is to check polling"
-wrap([$class: 'BuildUser']) {
-  userId = ${BUILD_USER}
-}
 //userId = currentBuild.getRawBuild().getCauses()[0].getUserId()
 stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 //build = job.getBuildByNumber(env.BUILD_ID as int)
@@ -122,6 +119,9 @@ node {
     ecom_commit = sh returnStdout: true, script: "git rev-parse HEAD"
     ecom_commit = ecom_commit.trim()
     echo ecom_commit
+  }
+  wrap([$class: 'BuildUser']) {
+  userId = ${BUILD_USER}
   }
   sh "pwd"
     myModule = load 'scripts/workflow/test.groovy'
