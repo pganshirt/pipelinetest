@@ -1,6 +1,7 @@
 import groovy.json.*
 echo "This is to check polling"
 userId = currentBuild.getRawBuild().getCauses()[0].getUserId()
+echo currentBuild.startTimeInMillis
 //build = job.getBuildByNumber(env.BUILD_ID as int)
 //userId = build.getCause(Cause.UserIdCause).getUserId()
 def initParams () {
