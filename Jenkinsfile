@@ -1,5 +1,8 @@
 import groovy.json.*
 echo "This is to check polling"
+wrap([$class: 'BuildUser']) {
+  userId = ${BUILD_USER}'
+}
 //userId = currentBuild.getRawBuild().getCauses()[0].getUserId()
 stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 //build = job.getBuildByNumber(env.BUILD_ID as int)
@@ -156,7 +159,7 @@ node {
           def data = [
             buildinfo:[
               buildNumber: "${env.BUILD_NUMBER}",
-              User: "${env.BUILD_USER_ID}",
+              User: "${userId}",
               buildResult: "${currentBuild.result}",
               timeStamp: "${stime}",
               changeSet: getChangeString()
