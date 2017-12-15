@@ -8,6 +8,7 @@ stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.S
 @NonCPS
 def getChangeString() {
     MAX_MSG_LEN = 100
+    def commitList=[]
     def changeString = ""
 
     echo "Gathering SCM changes"
@@ -15,10 +16,9 @@ def getChangeString() {
     for (int i = 0; i < changeLogSets.size(); i++) {
         def entries = changeLogSets[i].items
         for (int j = 0; j < entries.length; j++) {
-            def entry = entries[j]
-            commitId = entry.commitId
-            changeString += " - ${commitId}\n"
+            commitList += entries[j].commitId
         }
+        changeString = commitList.join(',')
     }
 
     if (!changeString) {
