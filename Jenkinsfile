@@ -121,7 +121,7 @@ node {
     echo ecom_commit
   }
   wrap([$class: 'BuildUser']) {
-  userId = ${BUILD_USER}
+  userId = "${env.BUILD_USER}"
   }
   sh "pwd"
     myModule = load 'scripts/workflow/test.groovy'
