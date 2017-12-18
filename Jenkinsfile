@@ -180,7 +180,8 @@ node {
         echo "This is UI_BM_VERSION: ${UI_BM_VERSION}"
     }
 }
-echo currentBuild.dump()
+def result = build.getAction(hudson.tasks.junit.TestResultAction.class).result
+echo "This is result ${result}"
 def myInternalFunction (String uid, List testSuite, String includePattern) {
   echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePattern}"
 }
