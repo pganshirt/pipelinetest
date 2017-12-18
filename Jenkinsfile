@@ -1,5 +1,6 @@
 import groovy.json.*
 echo "This is to check polling"
+// get build timestamp
 stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 //build = job.getBuildByNumber(env.BUILD_ID as int)
 //userId = build.getCause(Cause.UserIdCause).getUserId()
