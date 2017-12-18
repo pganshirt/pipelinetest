@@ -154,7 +154,7 @@ node {
         echo "This is ecom version ${i}"
         }
         parallel testMap
-        currentBuild.result = 'SUCCESS'
+        currentBuild.result = 'UNSTABLE'
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
           def data = [
             buildinfo:[
