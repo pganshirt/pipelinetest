@@ -200,6 +200,9 @@ def myOtherFunction (String uid, int testRunNum) {
       echo "printing muid: ${muid}"
     }
 }
+def tr = manager.build.testResultAction.result
+def cr = tr.failedTests.get(0)
+echo cr
 //currentBuild.setDescription("This is ecom version (.*)", "This is a test project")
 myModule.colorStage()
 def uploadRegex = "Uploaded:(.*)/ecom\\.csc/(.*)/ecom\\.csc-(.*)\\.tgz.*"
