@@ -180,6 +180,7 @@ node {
         echo "This is UI_BM_VERSION: ${UI_BM_VERSION}"
     }
 }
+echo build.dump()
 def myInternalFunction (String uid, List testSuite, String includePattern) {
   echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePattern}"
 }
