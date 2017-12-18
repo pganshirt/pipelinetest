@@ -180,7 +180,15 @@ node {
         echo "This is UI_BM_VERSION: ${UI_BM_VERSION}"
     }
 }
-def result = build.getAction(hudson.tasks.junit.TestResultAction.class).result
+@NonCPS
+def reportOnTestsForBuild() {
+  def build = manager.build
+  println("Build Number: ${build.number}")
+  if (build.getAction(hudson.tasks.junit.TestResultAction.class) == null) {
+    println("No tests")
+    return ("No Tests")
+  }
+reportOnTestsForBuild()
 echo "This is result ${result}"
 def myInternalFunction (String uid, List testSuite, String includePattern) {
   echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePattern}"
