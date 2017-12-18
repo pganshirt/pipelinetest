@@ -188,6 +188,7 @@ def reportOnTestsForBuild() {
     println("No tests")
     return ("No Tests")
   }
+}
 reportOnTestsForBuild()
 echo "This is result ${result}"
 def myInternalFunction (String uid, List testSuite, String includePattern) {
