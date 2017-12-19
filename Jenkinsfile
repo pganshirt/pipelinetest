@@ -154,7 +154,8 @@ node {
         echo "This is ecom version ${i}"
         }
         parallel testMap
-        currentBuild.result = 'UNSTABLE'
+        sh "./gradlew clean build"
+        currentBuild.result = 'SUCCESS'
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
           def data = [
             buildinfo:[
