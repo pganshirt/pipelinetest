@@ -156,7 +156,7 @@ node {
         parallel testMap
         dir('scripts'){
           sh "./gradlew clean build"
-          junit 'build/reports/**/*.xml'
+          junit 'build/test-results/**/*.xml'
         }
         currentBuild.result = 'SUCCESS'
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
