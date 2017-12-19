@@ -193,8 +193,7 @@ def reportOnTestsForBuild() {
     return ("No Tests")
   }
 }
-reportOnTestsForBuild()
-echo "This is result ${result}"
+//reportOnTestsForBuild()
 def myInternalFunction (String uid, List testSuite, String includePattern) {
   echo "myInternalFunction has been called with ${uid}, ${testSuite}, ${includePattern}"
 }
