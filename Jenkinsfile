@@ -5,12 +5,10 @@ stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.S
 //build = job.getBuildByNumber(env.BUILD_ID as int)
 //userId = build.getCause(Cause.UserIdCause).getUserId()
 @NonCPS
-def getChangeString() {
-    MAX_MSG_LEN = 100
+def getChangeSet() {
     def commitList=[]
     def changeString = ""
 
-    echo "Gathering SCM changes"
     def changeLogSets = currentBuild.rawBuild.changeSets
     for (int i = 0; i < changeLogSets.size(); i++) {
         def entries = changeLogSets[i].items
@@ -19,9 +17,8 @@ def getChangeString() {
         }
         changeString = commitList.join(',')
     }
-
     if (!changeString) {
-        changeString = " - No new changes"
+        changeString = "No changes"
     }
     return changeString
 }
@@ -166,7 +163,7 @@ node {
               User: "${userId}",
               buildResult: "${currentBuild.result}",
               timeStamp: "${stime}",
-              changeSet: getChangeString()
+              changeSet: getChangeSet()
             ]
           ]
         def jsonOut = readJSON text: groovy.json.JsonOutput.toJson(data)
