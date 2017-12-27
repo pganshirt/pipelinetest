@@ -102,7 +102,7 @@ echo "${scriptDebuggerTestsBranch}"
 for (String item : params) {
   echo "${item}"
 }
-/*def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
+def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
 def fmatcher = uploadedArtifactURL =~ fuploadRegex
 if(fmatcher.matches()) {
   echo "there is a match"
@@ -115,7 +115,7 @@ if(fmatcher.matches()) {
   echo "ArtifactId: ${myArtId}"
   echo "Version: ${myVer}"
   echo "Artifact: ${myArtifact}"
- }*/
+ }
 echo "user_branch is ${user_branch}"
 node {
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
