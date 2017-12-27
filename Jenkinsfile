@@ -102,7 +102,20 @@ echo "${scriptDebuggerTestsBranch}"
 for (String item : params) {
   echo "${item}"
 }
-
+def uploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
+def matcher = uploadedArtifactURL =~ uploadRegex
+if(matcher.matches()) {
+  echo "there is a match"
+  myVar = matcher.group(1)
+  myRepo = matcher.group(2)
+  myArtId = matcher.group(3)
+  myVer = matcher.group(4)
+  myArtifact = matcher.group(5)
+  echo "Repo: ${myRepo}"
+  echo "ArtifactId: ${myArtId}"
+  echo "Version: ${myVer}"
+  echo "Artifact: ${myArtifact}"
+ }
 echo "user_branch is ${user_branch}"
 node {
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
@@ -156,20 +169,6 @@ node {
         }
         currentBuild.result = 'SUCCESS'
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
-        def uploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
-        def matcher = uploadedArtifactURL =~ uploadRegex
-        if(matcher.matches()) {
-          echo "there is a match"
-          myVar = matcher.group(1)
-          myRepo = matcher.group(2)
-          myArtId = matcher.group(3)
-          myVer = matcher.group(4)
-          myArtifact = matcher.group(5)
-          echo "Repo: ${myRepo}"
-          echo "ArtifactId: ${myArtId}"
-          echo "Version: ${myVer}"
-          echo "Artifact: ${myArtifact}"
-        }
           def data = [
             buildinfo:[
               buildNumber: "${env.BUILD_NUMBER}",
