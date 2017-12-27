@@ -102,20 +102,6 @@ echo "${scriptDebuggerTestsBranch}"
 for (String item : params) {
   echo "${item}"
 }
-def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
-def fmatcher = uploadedArtifactURL =~ fuploadRegex
-if(fmatcher.matches()) {
-  echo "there is a match"
-  myVar = fmatcher.group(1)
-  myRepo = fmatcher.group(2)
-  myArtId = fmatcher.group(3)
-  myVer = fmatcher.group(4)
-  myArtifact = fmatcher.group(5)
-  echo "Repo: ${myRepo}"
-  echo "ArtifactId: ${myArtId}"
-  echo "Version: ${myVer}"
-  echo "Artifact: ${myArtifact}"
- }
 echo "user_branch is ${user_branch}"
 node {
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
@@ -228,4 +214,18 @@ if(matcher?.matches()) {
   myVer = matcher.group(3)
   currentBuild.setDescription(myVar + "\n" + myVer + "\n" + "Branch:" + branch)
 }
+def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
+def fmatcher = uploadedArtifactURL =~ fuploadRegex
+if(fmatcher.matches()) {
+  echo "there is a match"
+  myVar = fmatcher.group(1)
+  myRepo = fmatcher.group(2)
+  myArtId = fmatcher.group(3)
+  myVer = fmatcher.group(4)
+  myArtifact = fmatcher.group(5)
+  echo "Repo: ${myRepo}"
+  echo "ArtifactId: ${myArtId}"
+  echo "Version: ${myVer}"
+  echo "Artifact: ${myArtifact}"
+ }
 
