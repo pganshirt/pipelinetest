@@ -2,6 +2,7 @@ import groovy.json.*
 echo "This is to check polling"
 // get build timestamp
 stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+uploadedArtifactURL = "http://nexusmaster.lab.demandware.net/content/repositories/development/com/demandware/ecom/pmoineau.W-4556062.ckm_host_config/18.2.0.249-pmoineau.W-4556062.ckm_host_config/pmoineau.W-4556062.ckm_host_config-18.2.0.249-pmoineau.W-4556062.ckm_host_config-bin.tar.gz"
 @NonCPS
 def getChangeSet() {
     def commitList=[]
@@ -155,6 +156,20 @@ node {
         }
         currentBuild.result = 'SUCCESS'
         myModule.prepareComposeEnvFileFromTemplate('scripts/compose/ocapi', 'test')
+        def uploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
+        def matcher = uploadedArtifactURL =~ uploadRegex
+        if(matcher.matches()) {
+          echo "there is a match"
+          myVar = matcher.group(1)
+          myRepo = matcher.group(2)
+          myArtId = matcher.group(3)
+          myVer = matcher.group(4)
+          myArtifact = matcher.group(5)
+          echo "Repo: ${myRepo}"
+          echo "ArtifactId: ${myArtId}"
+          echo "Version: ${myVer}"
+          echo "Artifact: ${myArtifact}"
+        }
           def data = [
             buildinfo:[
               buildNumber: "${env.BUILD_NUMBER}",
