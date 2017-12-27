@@ -104,7 +104,7 @@ for (String item : params) {
 }
 def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
 def fmatcher = uploadedArtifactURL =~ fuploadRegex
-if(fmatcher.matches()) {
+/*if(fmatcher.matches()) {
   echo "there is a match"
   myVar = fmatcher.group(1)
   myRepo = fmatcher.group(2)
@@ -115,7 +115,7 @@ if(fmatcher.matches()) {
   echo "ArtifactId: ${myArtId}"
   echo "Version: ${myVer}"
   echo "Artifact: ${myArtifact}"
- }
+ }*/
 echo "user_branch is ${user_branch}"
 node {
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
