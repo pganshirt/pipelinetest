@@ -102,15 +102,15 @@ echo "${scriptDebuggerTestsBranch}"
 for (String item : params) {
   echo "${item}"
 }
-def uploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
-def matcher = uploadedArtifactURL =~ uploadRegex
-if(matcher.matches()) {
+def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
+def fmatcher = uploadedArtifactURL =~ fuploadRegex
+if(fmatcher.matches()) {
   echo "there is a match"
-  myVar = matcher.group(1)
-  myRepo = matcher.group(2)
-  myArtId = matcher.group(3)
-  myVer = matcher.group(4)
-  myArtifact = matcher.group(5)
+  myVar = fmatcher.group(1)
+  myRepo = fmatcher.group(2)
+  myArtId = fmatcher.group(3)
+  myVer = fmatcher.group(4)
+  myArtifact = fmatcher.group(5)
   echo "Repo: ${myRepo}"
   echo "ArtifactId: ${myArtId}"
   echo "Version: ${myVer}"
