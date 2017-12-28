@@ -227,7 +227,7 @@ def getBuildInfoParams()
       param_map = [:]
       def uploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/${ecomGroupIdURL}\/(.*)\/(.*)\/(.*)$/
       def fmatcher = uploadedArtifactURL =~ uploadRegex
-      if(matcher?.matches()) {
+      if(fmatcher?.matches()) {
         param_map['repo'] = fmatcher.group(2)
         param_map['artifactId'] = fmatcher.group(3)
         param_map['version'] = fmatcher.group(4)
