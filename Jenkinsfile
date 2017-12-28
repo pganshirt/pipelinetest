@@ -223,6 +223,7 @@ if(matcher?.matches()) {
 }
 echo "calling setUploadedArtifactURL"
 setUploadedArtifactURL()
+echo "This is uploadedArtifactURL: ${uploadedArtifactURL}"
 def getBuildInfoParams()
 {
     if (uploadedArtifactURL) {
