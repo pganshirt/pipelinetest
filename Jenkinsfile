@@ -3,6 +3,7 @@ echo "This is to check polling"
 // get build timestamp
 stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 uploadedArtifactURL = null
+ecomGroupId='com.demandware.com'
 
 def setUploadedArtifactURL(){
     uploadedArtifactURL = "http://nexusmaster.lab.demandware.net/content/repositories/development/com/demandware/ecom/pmoineau.W-4556062.ckm_host_config/18.2.0.249-pmoineau.W-4556062.ckm_host_config/pmoineau.W-4556062.ckm_host_config-18.2.0.249-pmoineau.W-4556062.ckm_host_config-bin.tar.gz"
