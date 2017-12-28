@@ -221,20 +221,26 @@ if(matcher?.matches()) {
   currentBuild.setDescription(myVar + "\n" + myVer + "\n" + "Branch:" + branch)
 }
 setUploadedArtifactURL()
+def getBuildInfoParams()
+{
+    if (uploadedArtifactURL) {
+      param_map = [:]
+      def uploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/${ecomGroupIdURL}\/(.*)\/(.*)\/(.*)$/
+      def fmatcher = uploadedArtifactURL =~ uploadRegex
+      if(matcher?.matches()) {
+        param_map['repo'] = fmatcher.group(2)
+        param_map['artifactId'] = fmatcher.group(3)
+        param_map['version'] = fmatcher.group(4)
+        param_map['artifact'] = fmatcher.group(5)
+      }
+   return param_map
+}
 if (uploadedArtifactURL) {
-    def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/${ecomGroupIdURL}\/(.*)\/(.*)\/(.*)$/
-  def fmatcher = uploadedArtifactURL =~ fuploadRegex
-  if(fmatcher?.matches()) {
-    echo "there is a match"
-    myVar = fmatcher.group(1)
-    myRepo = fmatcher.group(2)
-    myArtId = fmatcher.group(3)
-    myVer = fmatcher.group(4)
-    myArtifact = fmatcher.group(5)
-    echo "Repo: ${myRepo}"
-    echo "ArtifactId: ${myArtId}"
-    echo "Version: ${myVer}"
-    echo "Artifact: ${myArtifact}"
+    params = getBuildInfoParams()
+    echo "Repo: ${params['repo']}"
+    echo "ArtifactId: ${params['artifactId']}"
+    echo "Version: ${params['version']}"
+    echo "Artifact: ${params['artifact']}"
    }
 }
 
