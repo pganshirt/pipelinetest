@@ -7,6 +7,7 @@ ecomGroupId='com.demandware.ecom'
 ecomGroupIdURL=ecomGroupId.replace(".", '\\/')
 
 def setUploadedArtifactURL(){
+    echo "Setting uploadedArtifactURL"
     uploadedArtifactURL = "http://nexusmaster.lab.demandware.net/content/repositories/development/com/demandware/ecom/pmoineau.W-4556062.ckm_host_config/18.2.0.249-pmoineau.W-4556062.ckm_host_config/pmoineau.W-4556062.ckm_host_config-18.2.0.249-pmoineau.W-4556062.ckm_host_config-bin.tar.gz"
 }
 @NonCPS
@@ -220,6 +221,7 @@ if(matcher?.matches()) {
   myVer = matcher.group(3)
   currentBuild.setDescription(myVar + "\n" + myVer + "\n" + "Branch:" + branch)
 }
+echo "calling setUploadedArtifactURL"
 setUploadedArtifactURL()
 def getBuildInfoParams()
 {
