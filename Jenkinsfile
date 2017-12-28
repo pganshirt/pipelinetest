@@ -246,6 +246,5 @@ if (uploadedArtifactURL) {
     echo "ArtifactId: ${params['artifactId']}"
     echo "Version: ${params['version']}"
     echo "Artifact: ${params['artifact']}"
-   }
 }
 
