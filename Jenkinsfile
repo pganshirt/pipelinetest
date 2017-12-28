@@ -3,7 +3,7 @@ echo "This is to check polling"
 // get build timestamp
 stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 uploadedArtifactURL = null
-ecomGroupId='com.demandware.com'
+ecomGroupId='com.demandware.ecom'
 ecomGroupIdURL=ecomGroupId.replace(".", '\\/')
 
 def setUploadedArtifactURL(){
