@@ -224,6 +224,7 @@ setUploadedArtifactURL()
 def getBuildInfoParams()
 {
     if (uploadedArtifactURL) {
+      echo "Start create map"
       param_map = [:]
       def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/${ecomGroupIdURL}\/(.*)\/(.*)\/(.*)$/
       def fmatcher = uploadedArtifactURL =~ fuploadRegex
@@ -237,6 +238,7 @@ def getBuildInfoParams()
 }
 if (uploadedArtifactURL) {
     params = getBuildInfoParams()
+    echo "${params}"
     echo "Repo: ${params['repo']}"
     echo "ArtifactId: ${params['artifactId']}"
     echo "Version: ${params['version']}"
