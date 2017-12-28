@@ -237,7 +237,9 @@ def getBuildInfoParams()
         param_map['version'] = fmatcher.group(4)
         param_map['artifact'] = fmatcher.group(5)
       }
-   return param_map
+      return param_map
+    }
+    return null
 }
 if (uploadedArtifactURL) {
     params = getBuildInfoParams()
