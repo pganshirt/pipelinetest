@@ -224,7 +224,7 @@ setUploadedArtifactURL()
 if (uploadedArtifactURL) {
     def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/${ecomGroupIdURL}\/(.*)\/(.*)\/(.*)$/
   def fmatcher = uploadedArtifactURL =~ fuploadRegex
-  if(fmatcher.matches()) {
+  if(fmatcher?.matches()) {
     echo "there is a match"
     myVar = fmatcher.group(1)
     myRepo = fmatcher.group(2)
