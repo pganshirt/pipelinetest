@@ -4,6 +4,7 @@ echo "This is to check polling"
 stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 uploadedArtifactURL = null
 ecomGroupId='com.demandware.com'
+ecomGroupIdURL=ecomGroupId.replace(".", '\\/')
 
 def setUploadedArtifactURL(){
     uploadedArtifactURL = "http://nexusmaster.lab.demandware.net/content/repositories/development/com/demandware/ecom/pmoineau.W-4556062.ckm_host_config/18.2.0.249-pmoineau.W-4556062.ckm_host_config/pmoineau.W-4556062.ckm_host_config-18.2.0.249-pmoineau.W-4556062.ckm_host_config-bin.tar.gz"
@@ -221,7 +222,7 @@ if(matcher?.matches()) {
 }
 setUploadedArtifactURL()
 if (uploadedArtifactURL) {
-  def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/com\/demandware\/ecom\/(.*)\/(.*)\/(.*)$/
+    def fuploadRegex = /^http:\/\/(.*)\/repositories\/(.*)\/${ecomGroupIdURL}\/(.*)\/(.*)\/(.*)$/
   def fmatcher = uploadedArtifactURL =~ fuploadRegex
   if(fmatcher.matches()) {
     echo "there is a match"
