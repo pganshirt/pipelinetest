@@ -221,6 +221,7 @@ if(matcher?.matches()) {
   myVer = matcher.group(3)
   currentBuild.setDescription(myVar + "\n" + myVer + "\n" + "Branch:" + branch)
 }
+reportOnTestsForBuild()
 echo "calling setUploadedArtifactURL"
 setUploadedArtifactURL()
 echo "This is uploadedArtifactURL: ${uploadedArtifactURL}"
