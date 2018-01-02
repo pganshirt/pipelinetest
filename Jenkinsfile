@@ -190,9 +190,14 @@ node {
 def reportOnTestsForBuild() {
   def build = manager.build
   println("Build Number: ${build.number}")
-  if (build.getAction(hudson.tasks.junit.TestResultAction.class) == null) {
+  tr = build.getAction(hudson.tasks.junit.TestResultAction.class)
+  if (tr == null) {
     println("No tests")
     return ("No Tests")
+  } else {
+    println("Test Results")
+    total = tr.getTotalCount()
+      echo "Total tests: ${total}"
   }
 }
 //reportOnTestsForBuild()
