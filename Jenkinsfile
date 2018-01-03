@@ -168,6 +168,7 @@ node {
               User: "${userId}",
               buildResult: "${currentBuild.result}",
               timeStamp: "${stime}",
+              parameters: params,
               changeSet: getChangeSet()
             ]
           ]
