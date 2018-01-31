@@ -39,6 +39,9 @@ def initParams () {
               params.TEST_BRANCH ?:
               'master'
 }
+notification = params.notification_method
+notify_list = notification.split(',')
+echo notify_list
 
 release_version = params.release_version
 if (release_version || release_version == ''){
