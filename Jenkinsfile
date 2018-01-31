@@ -41,7 +41,7 @@ def initParams () {
 }
 notification = params.notification_method
 notify_list = notification.split(',')
-echo notify_list
+echo notify_list.toString()
 
 release_version = params.release_version
 if (release_version || release_version == ''){
