@@ -43,6 +43,13 @@ notification = params.notification_method
 notify_list = notification.split(',')
 echo notify_list.toString()
 
+if ('slack' in notify_list) {
+    echo "We must notify slack"
+}
+if ('mailRequestor' in notify_list) {
+    echo "Notify mail"
+}
+
 release_version = params.release_version
 if (release_version || release_version == ''){
   if (!(release_version ==~ /^\d+\.\d+\.\d+$/)){
