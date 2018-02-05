@@ -133,7 +133,7 @@ node {
     ecom_commit = ecom_commit.trim()
     echo ecom_commit
   }
-  def imageOut = sh returnStdout: true, script: "docker images -q docker-registry.releng.demandware.net/ecom/ci-ecom:6.8.1_1.8.0.131_1 2> /dev/null"
+  imageOut = sh returnStdout: true, script: "docker images -q docker-registry.releng.demandware.net/ecom/ci-ecom:6.8.1_1.8.0.131_1 2> /dev/null"
   echo imageOut
   wrap([$class: 'BuildUser']) {
   userId = "${env.BUILD_USER_ID}"
