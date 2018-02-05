@@ -5,6 +5,8 @@ stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.S
 uploadedArtifactURL = null
 ecomGroupId='com.demandware.ecom'
 ecomGroupIdURL=ecomGroupId.replace(".", '\\/')
+def imageOut = sh returnStdout: true, script: "docker images -q docker-registry.releng.demandware.net/ecom/ci-ecom:6.8.1_1.8.0.131_1 2> /dev/null"
+echo imageOut
 
 def setUploadedArtifactURL(){
     echo "Setting uploadedArtifactURL"
