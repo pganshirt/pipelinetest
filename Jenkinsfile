@@ -127,7 +127,7 @@ node {
               [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'scripts']],
               submoduleCfg: [], userRemoteConfigs: 
               [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
-    def props = readProperties file: 'version.properties'
+    def props = readProperties file: 'scripts/version.properties'
     echo props['product.id']
   dir('scripts'){
     sh "pwd"
