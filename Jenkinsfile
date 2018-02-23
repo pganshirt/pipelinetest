@@ -5,7 +5,8 @@ stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.S
 uploadedArtifactURL = null
 ecomGroupId='com.demandware.ecom'
 ecomGroupIdURL=ecomGroupId.replace(".", '\\/')
-
+def props = readProperties defaults: d, file: 'versions.properties'
+echo props['product.id']
 
 def setUploadedArtifactURL(){
     echo "Setting uploadedArtifactURL"
