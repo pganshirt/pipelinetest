@@ -5,8 +5,7 @@ stime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd'T'HH:mm:ss.S
 uploadedArtifactURL = null
 ecomGroupId='com.demandware.ecom'
 ecomGroupIdURL=ecomGroupId.replace(".", '\\/')
-def props = readProperties file: 'version.properties'
-echo props['product.id']
+
 
 def setUploadedArtifactURL(){
     echo "Setting uploadedArtifactURL"
@@ -128,6 +127,8 @@ node {
               [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'scripts']],
               submoduleCfg: [], userRemoteConfigs: 
               [[url: 'https://github.com/pganshirt/pipelinetest.git']]])
+    def props = readProperties file: 'version.properties'
+    echo props['product.id']
   dir('scripts'){
     sh "pwd"
     ecom_commit = sh returnStdout: true, script: "git rev-parse HEAD"
